@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_demo_project_one/widgets/screens/ChatScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/ClientScreenWidget.dart';
+import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidge.dart';
 
 void main() => runApp(const MyApp());
 
@@ -37,7 +38,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final List<Widget> _widgetOptions = <Widget>[
     ClientScreenWidget(),
     ChatScreenWidget(),
-    ClientScreenWidget(),
+    SettingsScreenWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -54,6 +55,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         items: const <BottomNavigationBarItem>[
