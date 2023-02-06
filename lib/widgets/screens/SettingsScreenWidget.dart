@@ -2,7 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
 
-class SettingsScreenWidget extends StatelessWidget {
+class SettingsScreenWidgetState extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return SettingsScreenWidget();
+  }
+}
+
+class SettingsScreenWidget extends State<SettingsScreenWidgetState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

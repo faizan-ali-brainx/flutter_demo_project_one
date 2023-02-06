@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
 import 'package:flutter_demo_project_one/widgets/screens/ThreadListingScreenWidget.dart';
 
-class ChatScreenWidget extends StatelessWidget {
+class ChatScreenWidgetState extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return ChatScreenWidget();
+  }
+}
+
+class ChatScreenWidget extends State<ChatScreenWidgetState> {
 
   @override
   Widget build(BuildContext context) {

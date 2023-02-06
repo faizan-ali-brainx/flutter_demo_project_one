@@ -1,7 +1,10 @@
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
 
 import '../models/Client.dart';
+import 'package:http/http.dart' as http;
 
 class ClientsProvider extends ChangeNotifier {
 
@@ -24,6 +27,23 @@ class ClientsProvider extends ChangeNotifier {
 
   List<Client> get getClients {
     return [..._clientList];
+  }
+
+  Future<void> getClientsFromServer() async {
+    final url = Uri.parse(AppUtils.BASE_URL + AppUtils.GET_CLIENTS);
+    try {
+      final headers = { "access-token": "u-OfpuunUjlgch5kqJEo7g", "client": "1h5KNPlyOsiusOpMFHdf1w", "uid": "testercd@mailinator.com"};
+      final response = await http.get(url, headers: headers);
+      // debugPrint('Response status: ${response.statusCode}');
+      // debugPrint('Response body: ${response.body}');
+      var body = jsonDecode(response.body) as Map<String, dynamic>;
+      body.forEach((key, value) {
+        debugPrint(key + " " + value);
+      });
+      notifyListeners();
+    } catch (error) {
+      rethrow;
+    }
   }
 
 }

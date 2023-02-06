@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_project_one/providers/ClientsProvider.dart';
 
 import 'package:flutter_demo_project_one/widgets/screens/ChatScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/ClientScreenWidget.dart';
-import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidge.dart';
+import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidget.dart';
+import 'package:flutter_demo_project_one/models/Client.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,12 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.blueAccent,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ClientsProvider())
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: Colors.blueAccent,
+        ),
+        title: _title,
+        home: const MyStatefulWidget(),
       ),
-      title: _title,
-      home: const MyStatefulWidget(),
     );
   }
 }
@@ -32,13 +40,14 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    ClientScreenWidget(),
-    ChatScreenWidget(),
-    SettingsScreenWidget(),
+    ClientScreenWidgetState(),
+    ChatScreenWidgetState(),
+    SettingsScreenWidgetState(),
   ];
 
   void _onItemTapped(int index) {
