@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 class ClientItemWidget extends StatelessWidget {
-
   final String _name;
   final String _number;
 
@@ -15,18 +13,27 @@ class ClientItemWidget extends StatelessWidget {
         leading: Container(
           width: 50,
           height: 50,
-          decoration:
-              const BoxDecoration(shape: BoxShape.circle, color: Colors.blueAccent),
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle, color: Colors.blueAccent),
           child: const Center(
               child: Text(
             "M",
             style: TextStyle(color: Colors.white),
           )),
         ),
-        title: Text(_name, style: const TextStyle(color: Colors.black),),
+        title: Text(
+          _name,
+          style: const TextStyle(
+            color: Colors.black,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
         subtitle: Text(_number, style: const TextStyle(color: Colors.black38)),
         trailing: IconButton(
-          icon: const Icon(Icons.more_horiz, color: Colors.black,),
+          icon: const Icon(
+            Icons.more_horiz,
+            color: Colors.black,
+          ),
           onPressed: () {
             _clientModalBottomSheet(context);
           },
@@ -35,17 +42,16 @@ class ClientItemWidget extends StatelessWidget {
     );
   }
 
-  void _clientModalBottomSheet(context){
+  void _clientModalBottomSheet(context) {
     showModalBottomSheet(
         context: context,
-        builder: (BuildContext bc){
+        builder: (BuildContext bc) {
           return Wrap(
             children: <Widget>[
-               ListTile(
+              ListTile(
                   leading: const Icon(Icons.call),
-                  title:  const Text('Call'),
-                  onTap: () => {}
-              ),
+                  title: const Text('Call'),
+                  onTap: () => {}),
               ListTile(
                 leading: const Icon(Icons.message),
                 title: const Text('Message'),
@@ -58,8 +64,6 @@ class ClientItemWidget extends StatelessWidget {
               ),
             ],
           );
-        }
-    );
+        });
   }
-
 }

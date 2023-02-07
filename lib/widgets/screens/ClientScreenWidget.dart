@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
 import 'package:flutter_demo_project_one/providers/ClientsProvider.dart';
-import 'package:flutter_demo_project_one/widgets/other/AppBarWidget.dart';
 import 'package:flutter_demo_project_one/widgets/listItems/ClientItemWidget.dart';
+import 'package:flutter_demo_project_one/models/ClientModel.dart';
 import 'package:provider/provider.dart';
 
 class ClientScreenWidgetState extends StatefulWidget {
@@ -16,6 +16,7 @@ class ClientScreenWidgetState extends StatefulWidget {
 class ClientScreenWidget extends State<ClientScreenWidgetState> {
   var _isInit = true;
   var _isLoading = false;
+  List<ClientModel> clientList = [];
 
   // @override
   // void initState() {
@@ -31,11 +32,12 @@ class ClientScreenWidget extends State<ClientScreenWidgetState> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<ClientsProvider>(context).getClientsFromServer().then((_) => {
-            setState(() {
-              _isLoading = false;
-            })
-          });
+      Provider.of<ClientsProvider>(context).getClientsFromServer().then((clients) {
+        setState(() {
+          _isLoading = false;
+          clientList = clients;
+        });
+      });
       _isInit = false;
     }
     super.didChangeDependencies();
@@ -43,7 +45,7 @@ class ClientScreenWidget extends State<ClientScreenWidgetState> {
 
   @override
   Widget build(BuildContext context) {
-    var clients = ClientsProvider().getClients;
+    // var clients = ClientsProvider().getClients;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -60,7 +62,6 @@ class ClientScreenWidget extends State<ClientScreenWidgetState> {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Searching clients")));
-              ;
             },
           ),
         ],
@@ -74,10 +75,10 @@ class ClientScreenWidget extends State<ClientScreenWidgetState> {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ListView.separated(
-                  itemCount: clients.length,
+                  itemCount: clientList.length,
                   itemBuilder: (context, index) {
                     return ClientItemWidget(
-                        clients[index].getName, clients[index].getPhoneNumber);
+                          clientList[index].name.toString(), clientList[index].clientPhones?.isEmpty == true ? "000000000000" : clientList[index].clientPhones!.first.number.toString());
                   },
                   separatorBuilder: (context, index) => const SizedBox(
                     height: 10,

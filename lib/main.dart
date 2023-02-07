@@ -5,7 +5,6 @@ import 'package:flutter_demo_project_one/providers/ClientsProvider.dart';
 import 'package:flutter_demo_project_one/widgets/screens/ChatScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/ClientScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidget.dart';
-import 'package:flutter_demo_project_one/models/Client.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(const MyApp());
