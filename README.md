@@ -1,16 +1,25 @@
 # flutter_demo_project_one
 
-A new Flutter project.
+This project is a clone of ClientDex developed in flutter. Project is aimed to fulfill the training purpose and Bi-annual Goal for Flutter.
 
-## Getting Started
+## Project Features
 
-This project is a starting point for a Flutter application.
+- Bottom Navigation
+- Client listing screen with API
+- Thread listing screen with API
+- Settings screen static UI
+- Login screen
 
-A few resources to get you started if this is your first Flutter project:
+## What I learned in this project?
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Stateless and Statefull widgets
+- Basic widget styling
+- Bottom navigation implementation
+- Provider pattern
+- API integration
+- Json Data parsing
+- Local storage of data
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+Note: Project is still under development.
+
