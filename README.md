@@ -8,6 +8,7 @@ This project is a clone of ClientDex developed in flutter. Project is aimed to f
 - Client listing screen with API
 - Thread listing screen with API
 - Settings screen static UI
+- Bottom sheet
 - Login screen
 
 ## What I learned in this project?
