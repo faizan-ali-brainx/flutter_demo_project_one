@@ -28,6 +28,7 @@ class ClientScreenWidget extends State<ClientScreenWidgetState> {
 
   @override
   void didChangeDependencies() {
+    debugPrint("In Client change dependency method");
     if (_isInit) {
       setState(() {
         _isLoading = true;

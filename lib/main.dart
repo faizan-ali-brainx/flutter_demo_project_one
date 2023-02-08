@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_project_one/providers/ClientsProvider.dart';
+import 'package:flutter_demo_project_one/providers/UserProvider.dart';
 
 import 'package:flutter_demo_project_one/widgets/screens/ChatScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/ClientScreenWidget.dart';
+import 'package:flutter_demo_project_one/widgets/screens/LoginScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidget.dart';
 import 'package:provider/provider.dart';
 
@@ -18,27 +20,33 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ClientsProvider())
+        ChangeNotifierProvider(create: (_) => ClientsProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
           primaryColor: Colors.blueAccent,
         ),
         title: _title,
-        home: const MyStatefulWidget(),
+        home: isUserLogin() ? const HomeScreenWidget() : LoginScreenWidgetState(),
       ),
     );
   }
+
+  bool isUserLogin() {
+    return true;
+  }
+
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+class HomeScreenWidget extends StatefulWidget {
+  const HomeScreenWidget({super.key});
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<HomeScreenWidget> createState() => _HomeScreenWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -57,6 +65,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("In main build method");
     return Scaffold(
       appBar: null,
       body: Container(

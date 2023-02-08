@@ -5,6 +5,7 @@ import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
 import 'package:flutter_demo_project_one/models/ClientModel.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ClientsProvider extends ChangeNotifier {
 
@@ -17,11 +18,13 @@ class ClientsProvider extends ChangeNotifier {
   Future<List<ClientModel>> getClientsFromServer() async {
     final url = Uri.parse(AppUtils.BASE_URL + AppUtils.GET_CLIENTS);
     try {
-      final headers = { "access-token": "u-OfpuunUjlgch5kqJEo7g", "client": "1h5KNPlyOsiusOpMFHdf1w", "uid": "testercd@mailinator.com"};
+      final prefs = await SharedPreferences.getInstance();
+      //final headers = { "access-token": prefs.getString('access-token') ?? "", "client": prefs.getString('client') ?? "", "uid": prefs.getString('uid') ?? ""};
+      final headers = { "access-token": "8EIA90V9ALq161MF32JQAA", "client": "43ML1oHitkBjyZCsQ4DtEA", "uid": "testercd@mailinator.com"};
       final response = await http.get(url, headers: headers);
-      debugPrint('Response body: ${response.body}');
       List clientList = jsonDecode(response.body) as List;
       var clients = clientList.map((i) => ClientModel.fromJson(i)).toList();
+      debugPrint("In main build method");
       return clients;
     } catch (error) {
       rethrow;
