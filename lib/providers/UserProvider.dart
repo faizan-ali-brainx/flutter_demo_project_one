@@ -8,15 +8,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class UserProvider extends ChangeNotifier {
-
   Future<bool> loginUser(String email, String password) async {
     final url = Uri.parse(AppUtils.BASE_URL + AppUtils.LOGIN);
     try {
       debugPrint("Email and Password $email : $password");
-      final response = await http.post(url, body: jsonEncode(<String, String> {
-        "email": email,
-        "password": password
-      }));
+      final response = await http.post(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            "email": "testercd@mailinator.com",
+            "password": "123456"
+          }));
       saveDataInPrefs(headers: response.headers);
       debugPrint("Login Response ${response.statusCode}");
       return Future.value(response.statusCode == 200);
@@ -33,5 +36,4 @@ class UserProvider extends ChangeNotifier {
     await prefs.setString('uid', headers["uid"].toString());
     await prefs.setBool('isUserLogin', true);
   }
-
 }

@@ -19,8 +19,9 @@ class ClientsProvider extends ChangeNotifier {
     final url = Uri.parse(AppUtils.BASE_URL + AppUtils.GET_CLIENTS);
     try {
       final prefs = await SharedPreferences.getInstance();
-      //final headers = { "access-token": prefs.getString('access-token') ?? "", "client": prefs.getString('client') ?? "", "uid": prefs.getString('uid') ?? ""};
-      final headers = { "access-token": "8EIA90V9ALq161MF32JQAA", "client": "43ML1oHitkBjyZCsQ4DtEA", "uid": "testercd@mailinator.com"};
+      final headers = { "access-token": prefs.getString('access-token') ?? "", "client": prefs.getString('client') ?? "", "uid": prefs.getString('uid') ?? ""};
+      //final headers = { "access-token": "8EIA90V9ALq161MF32JQAA", "client": "43ML1oHitkBjyZCsQ4DtEA", "uid": "testercd@mailinator.com"};
+      debugPrint("----------- Access token ---------- ${prefs.getString('access-token')}");
       final response = await http.get(url, headers: headers);
       List clientList = jsonDecode(response.body) as List;
       var clients = clientList.map((i) => ClientModel.fromJson(i)).toList();

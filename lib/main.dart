@@ -8,6 +8,7 @@ import 'package:flutter_demo_project_one/widgets/screens/ClientScreenWidget.dart
 import 'package:flutter_demo_project_one/widgets/screens/LoginScreenWidget.dart';
 import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidget.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(const MyApp());
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
   }
 
   bool isUserLogin() {
-    return true;
+    return false;
   }
 
 }

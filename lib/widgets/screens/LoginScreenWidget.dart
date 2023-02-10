@@ -155,7 +155,7 @@ class LoginScreenWidget extends State<LoginScreenWidgetState> {
                   child: const Text('Okay'),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => const HomeScreenWidget()),
                     );
