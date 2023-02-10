@@ -1,13 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_project_one/viewModels/ThreadsViewModel.dart';
 
-import 'package:flutter_demo_project_one/providers/ThreadsProvider.dart';
-import 'package:flutter_demo_project_one/widgets/listItems/ThreadItemWidget.dart';
+import '../listItems/ThreadItemWidget.dart';
 
 class ThreadListingScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var threads = ThreadsProvider().threadsList;
+    var threads = ThreadsViewModel().threadsList;
 
     return ListView.separated(
         itemBuilder: (context, index) {

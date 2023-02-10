@@ -2,12 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
-import 'package:flutter_demo_project_one/models/ClientModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:http/http.dart' as http;
 
-class UserProvider extends ChangeNotifier {
+class UserViewModel extends ChangeNotifier {
   Future<bool> loginUser(String email, String password) async {
     final url = Uri.parse(AppUtils.BASE_URL + AppUtils.LOGIN);
     try {

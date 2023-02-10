@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../models/Thread.dart';
 
-class ThreadsProvider extends ChangeNotifier {
+class ThreadsViewModel extends ChangeNotifier {
 
   final List<Thread> _threadsList = [
     Thread("1", "Jhon", "+92 3244273980", "Hi there", false,),

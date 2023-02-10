@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
-import 'package:flutter_demo_project_one/providers/ClientsProvider.dart';
-import 'package:flutter_demo_project_one/widgets/listItems/ClientItemWidget.dart';
 import 'package:flutter_demo_project_one/models/ClientModel.dart';
+import 'package:flutter_demo_project_one/viewModels/ClientsViewModel.dart';
 import 'package:provider/provider.dart';
+import '../listItems/ClientItemWidget.dart';
 
 class ClientScreenWidgetState extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class ClientScreenWidget extends State<ClientScreenWidgetState> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<ClientsProvider>(context).getClientsFromServer().then((clients) {
+      Provider.of<ClientsViewModel>(context).getClientsFromServer().then((clients) {
         setState(() {
           _isLoading = false;
           clientList = clients;

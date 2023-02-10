@@ -1,14 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_project_one/providers/ClientsProvider.dart';
-import 'package:flutter_demo_project_one/providers/UserProvider.dart';
-
-import 'package:flutter_demo_project_one/widgets/screens/ChatScreenWidget.dart';
-import 'package:flutter_demo_project_one/widgets/screens/ClientScreenWidget.dart';
-import 'package:flutter_demo_project_one/widgets/screens/LoginScreenWidget.dart';
-import 'package:flutter_demo_project_one/widgets/screens/SettingsScreenWidget.dart';
+import 'package:flutter_demo_project_one/ui/screens/ChatScreenWidget.dart';
+import 'package:flutter_demo_project_one/ui/screens/ClientScreenWidget.dart';
+import 'package:flutter_demo_project_one/ui/screens/LoginScreenWidget.dart';
+import 'package:flutter_demo_project_one/ui/screens/SettingsScreenWidget.dart';
+import 'package:flutter_demo_project_one/viewModels/ClientsViewModel.dart';
+import 'package:flutter_demo_project_one/viewModels/UserViewModel.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ClientsProvider()),
-        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => ClientsViewModel()),
+        ChangeNotifierProvider(create: (_) => UserViewModel()),
       ],
       child: MaterialApp(
         theme: ThemeData(

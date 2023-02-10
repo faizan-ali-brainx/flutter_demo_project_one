@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
-
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
-import 'package:flutter_demo_project_one/widgets/screens/ThreadListingScreenWidget.dart';
+import 'ThreadListingScreenWidget.dart';
 
 class ChatScreenWidgetState extends StatefulWidget {
   @override

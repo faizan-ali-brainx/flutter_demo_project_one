@@ -1,6 +1,4 @@
 
-import 'package:flutter/foundation.dart';
-
 class Thread {
   final String _id;
   final String _senderName;
@@ -25,4 +23,5 @@ class Thread {
   bool get isAttachment => _isAttachment;
 
   String get getLastMessage => _lastMessage;
+
 }

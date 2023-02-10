@@ -1,8 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo_project_one/extentions/AppUtils.dart';
 import 'package:flutter_demo_project_one/main.dart';
-import 'package:flutter_demo_project_one/providers/UserProvider.dart';
+import 'package:flutter_demo_project_one/viewModels/UserViewModel.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
@@ -104,7 +105,7 @@ class LoginScreenWidget extends State<LoginScreenWidgetState> {
                               borderRadius: BorderRadius.circular(18.0))),
                       onPressed: () {
                         debugPrint("Login Button Clicked");
-                        Provider.of<UserProvider>(context, listen: false)
+                        Provider.of<UserViewModel>(context, listen: false)
                             .loginUser(emailController.value.text,
                                 passwordController.value.text)
                             .then(
